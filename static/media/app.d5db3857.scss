@@ -1,0 +1,98 @@
+@import "header/header.scss";
+@import "boocks/book.scss";
+@import url('https://fonts.googleapis.com/css?family=Cuprum');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  background-color: #f1f1f1;
+  font-size: 17px;
+  font-family: 'Cuprum', sans-serif;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Cuprum', sans-serif;
+  @include btn();
+  &:focus:not(:active)::after {
+    animation: ripple 1s ease-out;
+
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  &-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section {
+  flex: 1;
+  max-width: 650px;
+  margin: 20px;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translate(-250px, 0);
+  transform: translate3d(-250px, 0, 0);
+  &.fade-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease;
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+    transition-property: transform, opacity;
+    transition-duration: 500ms;
+    transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear;
+  }
+}
+
+.fade-leave {
+  opacity: 1;
+  transform: translate(0, 0, 0);
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.32, 1), linear;
+  &.fade-leave-active {
+    opacity: 0;
+    transform: translate(250px, 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
